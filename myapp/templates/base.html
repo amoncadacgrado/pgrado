@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Título de la página</title>
+    <!-- Aquí puedes incluir tus etiquetas de estilo CSS -->
+    <link rel="stylesheet" href="{% static 'css/basestyle.css' %}" />
+  </head>
+  <body>
+    <!-- Barra de navegación -->
+    <nav>
+      <ul>
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        {% if user.is_authenticated %}
+        <!-- Si el usuario ha iniciado sesión, ocultar el enlace de iniciar sesión -->
+        <li><a href="{% url 'menu' %}">Menú</a></li>
+        <li><a href="{% url 'projects' %}">Mis Proyectos</a></li>
+        <li class="right"><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+
+        {% else %}
+        <!-- Si el usuario no ha iniciado sesión, ocultar el enlace de cerrar sesión -->
+        <li class="right">
+          <a href="{% url 'login' %}">Iniciar sesión</a>
+          <a href="{% url 'registro' %}">Registrarse</a>
+        </li>
+        {% endif %}
+        <!-- Otros elementos de la barra de navegación -->
+      </ul>
+    </nav>
+
+    <!-- Contenido principal de la página -->
+    <div class="content">{% block content %} {% endblock %}</div>
+
+    <!-- Pie de página -->
+    <footer>
+      <!-- Contenido del pie de página -->
+      <div class="footer-content">
+        <p>Contenido del pie de página</p>
+
+        <lu><a href="#">Enlace 1</a></lu>
+        <lu><a href="#">Enlace 2</a></lu>
+        <lu><a href="#">Enlace 3</a></lu>
+      </div>
+      <div class="footer-bottom">
+        <p>Derechos de autor &copy; 2023 | Moncadf Inc</p>
+      </div>
+    </footer>
+
+    <!-- Aquí puedes incluir tus scripts JavaScript -->
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

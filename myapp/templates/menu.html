@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- menu.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mis Proyectos</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Mis Proyectos</h1>
+    <div class="buttons">
+      <button class="button">Nuevo Proyecto</button>
+      <button class="button">Ver Proyectos</button>
+    </div>
+    <hr>
+    <h2>Proyectos Recientes</h2>
+    <table class="project-table">
+      <thead>
+        <tr>
+          <th>Nombre del Proyecto</th>
+          <th>Número de Estudiantes</th>
+          <th>Número de Indicadores</th>
+          <th>Eliminar</th>
+          <th>Editar</th>
+          <th>Ver Resultados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Proyecto 1</td>
+          <td>5</td>
+          <td>10</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Proyecto 2</td>
+          <td>3</td>
+          <td>7</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Proyecto 3</td>
+          <td>2</td>
+          <td>5</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Proyecto 4</td>
+          <td>4</td>
+          <td>8</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Proyecto 5</td>
+          <td>6</td>
+          <td>12</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
+
+
+
+{% endblock %}

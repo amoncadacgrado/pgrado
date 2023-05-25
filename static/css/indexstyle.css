@@ -1,0 +1,29 @@
+.slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider img {
+  display: none;
+  width: 100%;
+}
+
+.slider img:first-child {
+  display: block;
+}
+
+  
+.texto {
+    text-align: center;
+    margin-top: 20px;
+}
+  
+.texto h1 {
+    font-size: 24px;
+}
+  
+.texto p {
+    font-size: 16px;
+    color: #666;
+}
+  

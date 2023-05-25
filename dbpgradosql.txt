@@ -1,0 +1,72 @@
+-- Eliminar la base de datos
+DROP DATABASE dbpgrado;
+-- Crear la base de datos
+CREATE DATABASE dbpgrado;
+
+-- Usar la base de datos
+USE dbpgrado;
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+
+-- Crear la tabla para los grupos de indicadores
+CREATE TABLE grupos_indicadores (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL
+);
+
+-- Crear la tabla para los indicadores a medir
+CREATE TABLE indicadores (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  enunciado VARCHAR(100) NOT NULL,
+  grupos_indicadores_id INT,
+  FOREIGN KEY (grupos_indicadores_id) REFERENCES grupos_indicadores(id)
+);
+
+
+
+-- Crear la tabla para los grupos de estudiantes
+CREATE TABLE grupos_alumnos (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL
+);
+
+-- Crear la tabla para la información de los alumnos
+CREATE TABLE alumnos (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  apellido VARCHAR(50) NOT NULL,
+  grupos_alumnos_id INT,
+  FOREIGN KEY (grupos_alumnos_id) REFERENCES grupos_alumnos(id)
+);
+
+-- Crear la tabla para el login
+CREATE TABLE usuarios (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  nombre VARCHAR(50) NOT NULL,
+  apellido VARCHAR(50) NOT NULL
+
+);
+
+-- Crear la tabla para el cumplimiento de los indicadores por los alumnos
+CREATE TABLE cumplimientos (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  indicador_id INT,
+  alumno_id INT,
+  cumplido ENUM('Si', 'No') NOT NULL,
+  FOREIGN KEY (indicador_id) REFERENCES indicadores(id),
+  FOREIGN KEY (alumno_id) REFERENCES alumnos(id)
+);
+
+-- Crear la tabla de relación para los grupos de estudiantes y grupos de indicadores
+CREATE TABLE grupos_relacion (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  grupo_estudiantes_id INT,
+  grupo_indicadores_id INT,
+  usuarios_id INT,
+  FOREIGN KEY (grupo_estudiantes_id) REFERENCES grupos_alumnos(id),
+  FOREIGN KEY (grupo_indicadores_id) REFERENCES grupos_indicadores(id),
+  FOREIGN KEY (usuarios_id) REFERENCES usuarios(id)
+);
+

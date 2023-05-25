@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/indexstyle.css' %}">
+</head>
+<body>
+    <div class="slider">
+        <img src="{% static 'images/banner1.png' %}" alt="Imagen 1">
+        <img src="{% static 'images/banner2.png' %}" alt="Imagen 2">
+        <img src="{% static 'images/banner3.png' %}" alt="Imagen 3">
+    </div>
+    <script src="{% static 'js/indexscript.js' %}"></script>
+</body>
+</html>
+{% endblock %}
